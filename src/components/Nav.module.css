@@ -18,11 +18,35 @@
 }
 
 .logo {
-    font-family: var(--mono);
-    font-size: 12px;
-    color: var(--c1);
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    padding: 8px 10px;
+    border-radius: 100px;
+    font-family: var(--syne);
+    font-size: 15px;
+    color: var(--text);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    cursor: none;
+    letter-spacing: -0.01em;
+}
+
+.logo:hover {
+    background: rgba(255, 255, 255, 0.07);
+    border-color: var(--c1);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+}
+
+.firstName {
+    font-weight: 300;
+    opacity: 0.7;
+}
+
+.lastName {
+    font-weight: 700;
 }
 
 .links {

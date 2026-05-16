@@ -23,7 +23,10 @@ export default function Nav({ onHover }: Props) {
 
     return (
         <nav className={`${styles.nav} ${scrolled ? styles.scrolled : ''}`}>
-            <div className={styles.logo}>SD // Portfolio</div>
+            <div className={styles.logo}>
+                <span className={styles.firstName}>Shubham</span>
+                <span className={styles.lastName}>Dutta</span>
+            </div>
 
             <div className={`${styles.links} ${menuOpen ? styles.open : ''}`}>
                 {NAV_LINKS.map((l) => (

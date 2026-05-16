@@ -21,11 +21,23 @@ export default function Nav({ onHover }: Props) {
         return () => window.removeEventListener('scroll', onScroll)
     }, [])
 
+    const handleScroll = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+        if (!href.startsWith('#')) return
+        e.preventDefault()
+        setMenuOpen(false)
+        const id = href.replace('#', '')
+        const element = document.getElementById(id)
+        if (element) {
+            element.scrollIntoView({ behavior: 'smooth' })
+        }
+    }
+
     return (
         <nav className={`${styles.nav} ${scrolled ? styles.scrolled : ''}`}>
             <a href="#hero" className={styles.logo}
                 onMouseEnter={() => onHover(true)}
-                onMouseLeave={() => onHover(false)}>
+                onMouseLeave={() => onHover(false)}
+                onClick={(e) => handleScroll(e, '#hero')}>
                 <span className={styles.firstName}>Shubham</span>
                 <span className={styles.lastName}>Dutta</span>
             </a>
@@ -35,7 +47,7 @@ export default function Nav({ onHover }: Props) {
                     <a key={l.href} href={l.href} className={styles.link}
                         onMouseEnter={() => onHover(true)}
                         onMouseLeave={() => onHover(false)}
-                        onClick={() => setMenuOpen(false)}>
+                        onClick={(e) => handleScroll(e, l.href)}>
                         {l.label}
                     </a>
                 ))}

@@ -26,14 +26,14 @@ function App() {
     window.addEventListener('mousemove', onMove)
 
     const animate = () => {
-      // Smooth the dot slightly too for a liquid feel
-      dotRef.current.x += (mouseRef.current.x - dotRef.current.x) * 0.4
-      dotRef.current.y += (mouseRef.current.y - dotRef.current.y) * 0.4
+      // 1. Dot follows mouse (fast & direct)
+      dotRef.current.x += (mouseRef.current.x - dotRef.current.x) * 0.35
+      dotRef.current.y += (mouseRef.current.y - dotRef.current.y) * 0.35
       setCursorPos({ x: dotRef.current.x, y: dotRef.current.y })
 
-      // Smooth the ring with the user's preferred high speed
-      ringRef.current.x += (mouseRef.current.x - ringRef.current.x) * 0.22
-      ringRef.current.y += (mouseRef.current.y - ringRef.current.y) * 0.22
+      // 2. Ring follows dot (dragging/trailing effect)
+      ringRef.current.x += (dotRef.current.x - ringRef.current.x) * 0.12
+      ringRef.current.y += (dotRef.current.y - ringRef.current.y) * 0.12
       setRingPos({ x: ringRef.current.x, y: ringRef.current.y })
 
       animRef.current = requestAnimationFrame(animate)

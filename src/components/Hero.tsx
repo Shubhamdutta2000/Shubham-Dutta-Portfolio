@@ -22,10 +22,10 @@ export default function Hero({ onHover }: Props) {
         resize()
         window.addEventListener('resize', resize)
 
-        const dots = Array.from({ length: 120 }, () => ({
+        const dots = Array.from({ length: 140 }, () => ({
             x: Math.random() * canvas.width,
             y: Math.random() * canvas.height,
-            r: Math.random() * 1.5 + 0.3,
+            r: Math.random() * 2.2 + 0.8,
             vx: (Math.random() - 0.5) * 0.3,
             vy: (Math.random() - 0.5) * 0.3,
             o: Math.random() * 0.4 + 0.1,
@@ -64,9 +64,9 @@ export default function Hero({ onHover }: Props) {
             dots.forEach((a, i) => {
                 dots.slice(i + 1).forEach((b) => {
                     const dx = a.x - b.x, dy = a.y - b.y, dist = Math.sqrt(dx * dx + dy * dy)
-                    if (dist < 120) {
+                    if (dist < 160) {
                         ctx.beginPath(); ctx.moveTo(a.x, a.y); ctx.lineTo(b.x, b.y)
-                        ctx.strokeStyle = `rgba(0,229,255,${0.08 * (1 - dist / 120)})`; ctx.lineWidth = 0.5; ctx.stroke()
+                        ctx.strokeStyle = `rgba(0,229,255,${0.08 * (1 - dist / 160)})`; ctx.lineWidth = 0.5; ctx.stroke()
                     }
                 })
             })

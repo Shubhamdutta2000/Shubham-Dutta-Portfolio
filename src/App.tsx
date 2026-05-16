@@ -14,27 +14,37 @@ function App() {
   const [cursorPos, setCursorPos] = useState({ x: 0, y: 0 })
   const [ringPos, setRingPos] = useState({ x: 0, y: 0 })
   const [hovered, setHovered] = useState(false)
+  const mouseRef = useRef({ x: 0, y: 0 })
   const ringRef = useRef({ x: 0, y: 0 })
+  const dotRef = useRef({ x: 0, y: 0 })
   const animRef = useRef<number>()
 
   useEffect(() => {
     const onMove = (e: MouseEvent) => {
-      setCursorPos({ x: e.clientX, y: e.clientY })
+      mouseRef.current = { x: e.clientX, y: e.clientY }
     }
     window.addEventListener('mousemove', onMove)
 
-    const animateRing = () => {
-      ringRef.current.x += (cursorPos.x - ringRef.current.x) * 0.12
-      ringRef.current.y += (cursorPos.y - ringRef.current.y) * 0.12
+    const animate = () => {
+      // Smooth the dot slightly too for a liquid feel
+      dotRef.current.x += (mouseRef.current.x - dotRef.current.x) * 0.4
+      dotRef.current.y += (mouseRef.current.y - dotRef.current.y) * 0.4
+      setCursorPos({ x: dotRef.current.x, y: dotRef.current.y })
+
+      // Smooth the ring with the user's preferred high speed
+      ringRef.current.x += (mouseRef.current.x - ringRef.current.x) * 0.22
+      ringRef.current.y += (mouseRef.current.y - ringRef.current.y) * 0.22
       setRingPos({ x: ringRef.current.x, y: ringRef.current.y })
-      animRef.current = requestAnimationFrame(animateRing)
+
+      animRef.current = requestAnimationFrame(animate)
     }
-    animRef.current = requestAnimationFrame(animateRing)
+    animRef.current = requestAnimationFrame(animate)
+
     return () => {
       window.removeEventListener('mousemove', onMove)
       if (animRef.current) cancelAnimationFrame(animRef.current)
     }
-  }, [cursorPos.x, cursorPos.y])
+  }, [])
 
   // Scroll reveal
   useEffect(() => {

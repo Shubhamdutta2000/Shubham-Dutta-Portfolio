@@ -184,7 +184,6 @@ export default function SystemDesign() {
     const [selected, setSelected] = useState<ArchNode | null>(null)
     const [activeProduct, setActiveProduct] = useState<string>('llm-saas')
     const [traceStep, setTraceStep] = useState<number>(-1)
-    const [tracing, setTracing] = useState(false)
 
     const currentProduct = PRODUCTS.find((p) => p.id === activeProduct)!
     const highlightedNodes = currentProduct.nodes
@@ -192,7 +191,6 @@ export default function SystemDesign() {
     useEffect(() => {
         let isMounted = true
         const runTrace = async () => {
-            setTracing(true)
             setTraceStep(-1)
             const flow = currentProduct.flow
             for (let i = 0; i < flow.length; i++) {
@@ -203,7 +201,6 @@ export default function SystemDesign() {
             if (!isMounted) return
             await new Promise((r) => setTimeout(r, 800))
             setTraceStep(-1)
-            setTracing(false)
         }
         runTrace()
         return () => { isMounted = false }

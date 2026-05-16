@@ -1,0 +1,70 @@
+.section {
+    background: var(--bg);
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    background: var(--border);
+}
+
+.card {
+    background: var(--bg);
+    padding: 40px 32px;
+    position: relative;
+    overflow: hidden;
+    transition: background 0.3s;
+}
+
+.card:hover {
+    background: var(--surface);
+}
+
+.card::after {
+    content: '';
+    position: absolute;
+    bottom: -40px;
+    right: -40px;
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(0, 229, 255, 0.06) 0%, transparent 70%);
+}
+
+.icon {
+    font-size: 32px;
+    display: block;
+    margin-bottom: 20px;
+}
+
+.rank {
+    font-family: var(--mono);
+    font-size: 40px;
+    font-weight: 800;
+    color: var(--c1);
+    line-height: 1;
+    margin-bottom: 8px;
+}
+
+.event {
+    font-size: 16px;
+    font-weight: 700;
+    margin-bottom: 8px;
+}
+
+.desc {
+    font-size: 13px;
+    color: var(--muted2);
+    line-height: 1.7;
+}
+
+.desc :global(strong) {
+    color: var(--text);
+}
+
+@media (max-width: 768px) {
+    .grid {
+        grid-template-columns: 1fr;
+    }
+}

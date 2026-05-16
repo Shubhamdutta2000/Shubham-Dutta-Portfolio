@@ -1,0 +1,115 @@
+.section {
+    background: var(--bg2);
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 48px 64px;
+    margin-bottom: 60px;
+}
+
+.group {}
+
+.groupLabel {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.groupLine {
+    flex: 1;
+    height: 1px;
+    background: var(--border);
+}
+
+.bars {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.barItem {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.barTop {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.barName {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--text);
+}
+
+.barLevel {
+    font-family: var(--mono);
+    font-size: 9px;
+    color: var(--muted);
+    letter-spacing: 0.1em;
+}
+
+.barTrack {
+    height: 2px;
+    background: var(--surface2);
+    border-radius: 1px;
+    overflow: hidden;
+}
+
+.barFill {
+    height: 100%;
+    border-radius: 1px;
+}
+
+.tagCloud {
+    border-top: 1px solid var(--border);
+    padding-top: 40px;
+}
+
+.tagCloudLabel {
+    font-family: var(--mono);
+    font-size: 10px;
+    color: var(--muted);
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    margin-bottom: 16px;
+}
+
+.tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.tag {
+    font-family: var(--mono);
+    font-size: 11px;
+    padding: 6px 14px;
+    border: 1px solid var(--border);
+    border-radius: 3px;
+    color: var(--muted2);
+    transition: all var(--transition);
+}
+
+.tag:hover {
+    border-color: var(--c1);
+    color: var(--c1);
+    background: rgba(0, 229, 255, 0.05);
+}
+
+@media (max-width: 768px) {
+    .grid {
+        grid-template-columns: 1fr;
+        gap: 32px;
+    }
+}

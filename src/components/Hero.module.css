@@ -1,0 +1,175 @@
+.hero {
+    position: relative;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    background: var(--bg);
+}
+
+.canvas {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+}
+
+.content {
+    position: relative;
+    z-index: 2;
+    padding: 0 80px;
+    max-width: 920px;
+}
+
+.tag {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--c1);
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.tag::before {
+    content: '';
+    width: 40px;
+    height: 1px;
+    background: var(--c1);
+}
+
+.name {
+    font-size: clamp(52px, 7.5vw, 96px);
+    font-weight: 800;
+    line-height: 0.92;
+    letter-spacing: -0.02em;
+    margin-bottom: 20px;
+}
+
+.name span {
+    display: block;
+}
+
+.nameOutline {
+    color: transparent;
+    -webkit-text-stroke: 1px rgba(0, 229, 255, 0.35);
+}
+
+.role {
+    font-family: var(--mono);
+    font-size: 14px;
+    color: var(--muted2);
+    margin-bottom: 40px;
+    line-height: 1.9;
+}
+
+.highlight {
+    color: var(--c1);
+}
+
+.actions {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+}
+
+/* Stats */
+.stats {
+    position: absolute;
+    bottom: 48px;
+    right: 80px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1px;
+    border: 1px solid var(--border);
+    background: var(--border);
+}
+
+.stat {
+    padding: 18px 24px;
+    background: rgba(10, 22, 40, 0.85);
+    backdrop-filter: blur(10px);
+}
+
+.statVal {
+    font-size: 30px;
+    font-weight: 800;
+    color: var(--c1);
+    font-family: var(--mono);
+    display: block;
+    line-height: 1;
+    margin-bottom: 4px;
+}
+
+.statLbl {
+    font-family: var(--mono);
+    font-size: 9px;
+    color: var(--muted);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+}
+
+.scrollHint {
+    position: absolute;
+    bottom: 36px;
+    left: 80px;
+    font-family: var(--mono);
+    font-size: 10px;
+    color: var(--muted);
+    letter-spacing: 0.12em;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.scrollLine {
+    display: block;
+    width: 1px;
+    height: 48px;
+    background: linear-gradient(to bottom, var(--c1), transparent);
+}
+
+@media (max-width: 768px) {
+    .hero {
+        height: auto;
+        min-height: 100vh;
+        padding: 120px 0 60px 0;
+        align-items: flex-start;
+    }
+
+    .content {
+        padding: 0 20px;
+    }
+
+    .name {
+        font-size: clamp(42px, 12vw, 64px);
+    }
+
+    .role {
+        font-size: 13px;
+        margin-bottom: 32px;
+    }
+
+    .stats {
+        position: relative;
+        bottom: auto;
+        right: auto;
+        margin-top: 60px;
+        grid-template-columns: 1fr 1fr;
+        width: calc(100% - 40px);
+        margin-left: 20px;
+    }
+
+    .stat {
+        padding: 16px;
+    }
+
+    .statVal {
+        font-size: 24px;
+    }
+
+    .scrollHint {
+        display: none;
+    }
+}
